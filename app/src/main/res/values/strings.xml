@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">一键全屏</string>
+    <string name="accessibility_service_description">用来自动设置强制全屏</string>
+    <string name="accessibility_service_label">夏普S2一键全屏设置</string>
+    <string name="accessibility_need">请启动辅助功能！</string>
+    <string name="accessibility_success">强制全屏已经设置成功！</string>
+    <string name="error_info">如果你看到这个界面，说明程序出错，请退出重新进入。或者联系作者 me@chenchi.cc </string>
+</resources>
