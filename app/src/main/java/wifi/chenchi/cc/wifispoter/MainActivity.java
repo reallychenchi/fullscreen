@@ -14,6 +14,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.Toast;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 
 import java.util.List;
@@ -26,15 +27,24 @@ public class MainActivity extends Activity implements ServiceConnection {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        UMConfigure.init(this.getApplicationContext(), "5b57e926b27b0a060e000149", "release", UMConfigure.DEVICE_TYPE_PHONE, null);
+        UMConfigure.init(this.getApplicationContext(), "5b88a2f7f43e4809fc0000a3", "release", UMConfigure.DEVICE_TYPE_PHONE, null);
+        MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_NORMAL);
         openAccessibility("wifi.chenchi.cc.wifispoter.SpAccessibilityService", this);
     }
 
+    @Override
     protected void onResume(){
         super.onResume();
         if (close){
             finish();
         }
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     private boolean checkAccessibilityEnabled(String serviceName) {
@@ -101,6 +111,7 @@ public class MainActivity extends Activity implements ServiceConnection {
             Toast.makeText(this, R.string.accessibility_need, Toast.LENGTH_LONG).show();
         }
         close = true;
+        MobclickAgent.onEvent(this, "OPEN");
     }
 
     @Override

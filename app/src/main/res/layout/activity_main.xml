@@ -12,7 +12,7 @@
         tools:context="wifi.chenchi.cc.wifispoter.MainActivity">
 
     <TextView
-            android:drawableTop="@mipmap/ic_launcher"
+            android:drawableTop="@drawable/main_icon"
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
